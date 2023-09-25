@@ -1,6 +1,8 @@
 package org.lessons.gestore.eventi;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +15,7 @@ public class Main {
 //		LocalDate mineDateFuture = LocalDate.parse("2023-12-04");
 
 		try {
-			Evento e1 = new Evento("Super concerto", today, 15);
+			Evento e1 = new Evento("Super Evento", today, 15);
 			System.out.println(e1.toString());
 
 			// PRENOTAZIONI
@@ -49,6 +51,18 @@ public class Main {
 
 		} catch (Exception e) {
 
+			e.printStackTrace();
+		}
+
+		LocalTime t1 = LocalTime.now();
+		String bs1 = "14.99";
+		BigDecimal b1 = new BigDecimal(bs1);
+
+		try {
+			Concerto c1 = new Concerto("Super Evento", today, 15, t1, b1);
+
+			System.out.println(c1.toString());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
