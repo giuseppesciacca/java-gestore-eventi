@@ -1,6 +1,7 @@
 package org.lessons.gestore.eventi;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Evento {
 
@@ -85,6 +86,10 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return "Titolo: " + titolo + "\nData: " + data;
+
+		DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String formattedDate = data.format(pattern);
+
+		return "Titolo: " + titolo + "\nData: " + formattedDate;
 	}
 }
