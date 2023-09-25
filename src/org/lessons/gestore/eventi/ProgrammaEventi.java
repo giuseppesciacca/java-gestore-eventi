@@ -2,7 +2,8 @@ package org.lessons.gestore.eventi;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProgrammaEventi {
@@ -49,6 +50,7 @@ public class ProgrammaEventi {
 		}
 
 		return newEventi;
+
 	}
 
 	public String getEventiNelProgramma() {
@@ -59,4 +61,23 @@ public class ProgrammaEventi {
 	public void clearProgrammaEventi() {
 		eventi.clear();
 	}
+
+	public String printSortedListByDate() {
+
+		Collections.sort(eventi, new Comparator<Evento>() {
+			@Override
+			public int compare(Evento evento1, Evento evento2) {
+				return evento1.getData().compareTo(evento2.getData());
+			}
+		});
+
+		String listPrinted = "";
+
+		for (Evento evento : eventi) {
+			listPrinted += "- " + evento.getData() + " - " + evento.getTitolo() + "\n";
+		}
+
+		return listPrinted;
+	}
+
 }

@@ -3,8 +3,6 @@ package org.lessons.gestore.eventi;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -100,6 +98,9 @@ public class Main {
 				System.out.println(evento.toString() + "\n");
 			}
 		}
+
+		// STAMPA LISTA IN ORDINE DI DATA
+		System.out.println(p1.printSortedListByDate());
 
 		sc.close();
 	}
