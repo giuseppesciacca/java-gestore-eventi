@@ -26,7 +26,7 @@ public class Main {
 			String nPostiTotString = sc.nextLine();
 			int nPostiTot = Integer.parseInt(nPostiTotString);
 
-			System.out.print("\nInserisci l'ora del concerto: ");
+			System.out.print("\nInserisci l'ora del concerto, in [HH:MM]: ");
 			String hourString = sc.nextLine();
 			LocalTime hour = LocalTime.parse(hourString);
 			System.out.println(hour);
