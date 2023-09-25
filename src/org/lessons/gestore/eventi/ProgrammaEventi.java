@@ -87,4 +87,64 @@ public class ProgrammaEventi {
 		return listPrinted;
 	}
 
+	public String mediaPrezzoConcerto() {
+		List<Evento> concerti = new ArrayList<Evento>();
+
+		float sum = 0f;
+
+		for (Evento evento : eventi) {
+			if (evento instanceof Concerto) {
+				float priceInt = ((Concerto) evento).getPrezzo().floatValue();
+				sum += priceInt;
+				concerti.add(evento);
+			}
+		}
+
+		float avgPriceConcertFloat = sum / concerti.size();
+
+		return "Prezzo medio concerto: " + String.format("%.02f", avgPriceConcertFloat);
+	}
+
+	public String mediaPrezzoSpettacolo() {
+		List<Evento> spettacoli = new ArrayList<Evento>();
+
+		float sum = 0f;
+
+		for (Evento evento : eventi) {
+			if (evento instanceof Spettacolo) {
+				float priceInt = ((Spettacolo) evento).getPrezzo().floatValue();
+				sum += priceInt;
+				spettacoli.add(evento);
+			}
+		}
+
+		float avgPriceShowFloat = sum / spettacoli.size();
+
+		return "Prezzo medio spettacolo: " + String.format("%.02f", avgPriceShowFloat);
+	}
+
+	public String mediaPrezzoEvento() {
+		List<Evento> spettacoli = new ArrayList<Evento>();
+		List<Evento> concerti = new ArrayList<Evento>();
+
+		float sum = 0f;
+
+		for (Evento evento : eventi) {
+			if (evento instanceof Spettacolo) {
+				float priceInt = ((Spettacolo) evento).getPrezzo().floatValue();
+				sum += priceInt;
+				spettacoli.add(evento);
+			} else if (evento instanceof Spettacolo) {
+				float priceInt = ((Spettacolo) evento).getPrezzo().floatValue();
+				sum += priceInt;
+				concerti.add(evento);
+			}
+
+		}
+
+		float avgPriceShowFloat = sum / spettacoli.size();
+
+		return "Prezzo medio evento: " + String.format("%.02f", avgPriceShowFloat);
+	}
+
 }

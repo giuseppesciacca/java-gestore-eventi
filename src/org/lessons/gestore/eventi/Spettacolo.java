@@ -7,7 +7,7 @@ public class Spettacolo extends Evento {
 
 	private BigDecimal prezzo;
 
-	public Spettacolo(String titolo, LocalDate data, int nPostiTot) throws Exception {
+	public Spettacolo(String titolo, LocalDate data, int nPostiTot, BigDecimal prezzo) throws Exception {
 		super(titolo, data, nPostiTot);
 		setPrezzo(prezzo);
 	}

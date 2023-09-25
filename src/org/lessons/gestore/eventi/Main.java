@@ -111,19 +111,38 @@ public class Main {
 
 		String priceStr = "14.99";
 		BigDecimal b1 = new BigDecimal(priceStr);
+		String priceStr2 = "30.99";
+		BigDecimal b2 = new BigDecimal(priceStr2);
+		String priceStr3 = "8.99";
+		BigDecimal b3 = new BigDecimal(priceStr3);
 
 		LocalTime l1 = LocalTime.now();
 
 		try {
-			Concerto c2 = new Concerto("titolo1", today, 15, l1, b1);
-			Concerto c3 = new Concerto("titolo2", mineDateFuture, 12, l1, b1);
-			Concerto c4 = new Concerto("titolo3", mineDateFuture2, 1, l1, b1);
-
+			Concerto c2 = new Concerto("concerto1", today, 15, l1, b1);
+			Concerto c3 = new Concerto("concerto2", mineDateFuture, 12, l1, b2);
+			Concerto c4 = new Concerto("concerto3", mineDateFuture2, 1, l1, b3);
 			p2.addEvento(c2);
 			p2.addEvento(c3);
 			p2.addEvento(c4);
 
+			Spettacolo s1 = new Spettacolo("spett1", today, 15, b1);
+			Spettacolo s2 = new Spettacolo("spett2", mineDateFuture, 12, b2);
+			Spettacolo s3 = new Spettacolo("spett3", mineDateFuture2, 1, b3);
+			p2.addEvento(s1);
+			p2.addEvento(s2);
+			p2.addEvento(s3);
+
 			System.out.println(p2.printSortedListByDate());
+
+			System.out.println("\n******************");
+			System.out.println(p2.mediaPrezzoConcerto());
+
+			System.out.println("\n******************");
+			System.out.println(p2.mediaPrezzoSpettacolo());
+
+			System.out.println("\n******************");
+			System.out.println(p2.mediaPrezzoEvento());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
