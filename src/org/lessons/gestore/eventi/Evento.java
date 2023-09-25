@@ -1,13 +1,15 @@
 package org.lessons.gestore.eventi;
 
+import java.time.LocalDate;
+
 public class Evento {
 
 	private String titolo;
-	private String data;
+	private LocalDate data;
 	private int nPostiTot;
 	private int nPostiPrenotati;
 
-	public Evento(String titolo, String data, int nPostiTot) {
+	public Evento(String titolo, LocalDate data, int nPostiTot) throws Exception {
 		setTitolo(titolo);
 		setData(data);
 		setnPostiTot(nPostiTot);
@@ -22,11 +24,18 @@ public class Evento {
 		this.titolo = titolo;
 	}
 
-	public String getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(LocalDate data) throws Exception {
+
+		LocalDate today = LocalDate.now();
+
+		if (data.isBefore(today)) {
+			throw new Exception("La data non puo' essere in un giorno precedente ad oggi.");
+		}
+
 		this.data = data;
 	}
 
@@ -34,7 +43,12 @@ public class Evento {
 		return nPostiTot;
 	}
 
-	public void setnPostiTot(int nPostiTot) {
+	private void setnPostiTot(int nPostiTot) throws Exception {
+
+		if (nPostiTot > 0) {
+			throw new Exception("Posti totali devono essere maggiori di zero.");
+		}
+
 		this.nPostiTot = nPostiTot;
 	}
 
@@ -42,8 +56,7 @@ public class Evento {
 		return nPostiPrenotati;
 	}
 
-	public void setnPostiPrenotati(int nPostiPrenotati) {
+	private void setnPostiPrenotati(int nPostiPrenotati) {
 		this.nPostiPrenotati = nPostiPrenotati;
 	}
-
 }
