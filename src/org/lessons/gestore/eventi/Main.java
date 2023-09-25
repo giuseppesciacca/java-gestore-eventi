@@ -100,9 +100,12 @@ public class Main {
 		}
 
 		// STAMPA LISTA IN ORDINE DI DATA
-		p1.printSortedListByDate();
+		System.out.println(p1.printSortedListByDate());
 
 		// BONUS 5
+		System.out.println("\n******************");
+		System.out.println("BONUS 5");
+		System.out.println("******************\n");
 		ProgrammaEventi p2 = new ProgrammaEventi("Eventi2");
 
 		LocalDate today = LocalDate.now();
