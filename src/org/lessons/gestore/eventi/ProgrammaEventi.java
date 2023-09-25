@@ -18,7 +18,7 @@ public class ProgrammaEventi {
 		return titolo;
 	}
 
-	public void setTitolo(String titolo) {
+	private void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 
@@ -26,8 +26,22 @@ public class ProgrammaEventi {
 		return eventi;
 	}
 
-	public void setEventi(List<Evento> eventi) {
+	private void setEventi(List<Evento> eventi) {
 		this.eventi = eventi;
+	}
+
+	public void addEvento(Evento evento) {
+
+		eventi.add(evento);
+	}
+
+	public String getEventiNelProgramma() {
+		int nEventi = getEventi().size();
+		return "Numero eventi nel programma: " + nEventi;
+	}
+
+	public void clearProgrammaEventi() {
+		eventi.clear();
 	}
 
 }
