@@ -33,7 +33,7 @@ public class Evento {
 		LocalDate today = LocalDate.now();
 
 		if (data.isBefore(today)) {
-			throw new Exception("La data non puo' essere in un giorno precedente ad oggi.");
+			throw new Exception("La data non puo' essere di un giorno precedente ad oggi.");
 		}
 
 		this.data = data;
@@ -45,7 +45,7 @@ public class Evento {
 
 	private void setnPostiTot(int nPostiTot) throws Exception {
 
-		if (nPostiTot > 0) {
+		if (nPostiTot < 0) {
 			throw new Exception("Posti totali devono essere maggiori di zero.");
 		}
 
@@ -58,5 +58,33 @@ public class Evento {
 
 	private void setnPostiPrenotati(int nPostiPrenotati) {
 		this.nPostiPrenotati = nPostiPrenotati;
+	}
+
+	public void prenota() throws Exception {
+		nPostiPrenotati++;
+		LocalDate today = LocalDate.now();
+
+		if (nPostiPrenotati >= getnPostiTot()) {
+			throw new Exception("SOLD OUT, non è possibile prenotare ulteriori posti.");
+		} else if (data.isBefore(today)) {
+			throw new Exception("Non è possibile prenotare l'evento in quanto è stato già tenuto in data " + data
+					+ ". Prenota un altro evento.");
+		}
+	}
+
+	public void disdici() throws Exception {
+		nPostiPrenotati--;
+		LocalDate today = LocalDate.now();
+
+		if (nPostiPrenotati < 0) {
+			throw new Exception("Impossibile applicare la disdetta. Non ci sono posti prenotati per questo evento.");
+		} else if (data.isBefore(today)) {
+			throw new Exception("Non è possibile disdire l'evento in quanto è stato già tenuto in data " + data + ".");
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Titolo: " + titolo + "\nData: " + data;
 	}
 }
