@@ -98,9 +98,35 @@ public class Main {
 				System.out.println(evento.toString() + "\n");
 			}
 		}
-		
+
 		// STAMPA LISTA IN ORDINE DI DATA
 		p1.printSortedListByDate();
+
+		// BONUS 5
+		ProgrammaEventi p2 = new ProgrammaEventi("Eventi2");
+
+		LocalDate today = LocalDate.now();
+		LocalDate mineDateFuture = LocalDate.parse("2023-12-04");
+		LocalDate mineDateFuture2 = LocalDate.parse("2025-12-04");
+
+		String priceStr = "14.99";
+		BigDecimal b1 = new BigDecimal(priceStr);
+
+		LocalTime l1 = LocalTime.now();
+
+		try {
+			Concerto c2 = new Concerto("titolo1", today, 15, l1, b1);
+			Concerto c3 = new Concerto("titolo2", mineDateFuture, 12, l1, b1);
+			Concerto c4 = new Concerto("titolo3", mineDateFuture2, 1, l1, b1);
+
+			p2.addEvento(c2);
+			p2.addEvento(c3);
+			p2.addEvento(c4);
+
+			System.out.println(p2.printSortedListByDate());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		sc.close();
 	}
