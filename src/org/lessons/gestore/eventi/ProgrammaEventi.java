@@ -1,6 +1,8 @@
 package org.lessons.gestore.eventi;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ProgrammaEventi {
@@ -35,6 +37,20 @@ public class ProgrammaEventi {
 		eventi.add(evento);
 	}
 
+	public List<Evento> getEventiConSpecificaData(LocalDate date) {
+
+		List<Evento> newEventi = new ArrayList<Evento>();
+
+		for (Evento evento : eventi) {
+			LocalDate dataEvento = evento.getData();
+			if (dataEvento.equals(date)) {
+				newEventi.add(evento);
+			}
+		}
+
+		return newEventi;
+	}
+
 	public String getEventiNelProgramma() {
 		int nEventi = getEventi().size();
 		return "Numero eventi nel programma: " + nEventi;
@@ -43,5 +59,4 @@ public class ProgrammaEventi {
 	public void clearProgrammaEventi() {
 		eventi.clear();
 	}
-
 }

@@ -3,16 +3,15 @@ package org.lessons.gestore.eventi;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
-//		LocalDate today = LocalDate.now();
-//		LocalDate mineDatePast = LocalDate.parse("2022-01-04");
-//		LocalDate mineDateFuture = LocalDate.parse("2023-12-04");
 
 		ProgrammaEventi p1 = new ProgrammaEventi("Eventi");
 
@@ -74,11 +73,10 @@ public class Main {
 				}
 
 				// CONTINUE TO ADD EVENTS?
-				System.out.println("Aggiungere altro evento? Y/n");
+				System.out.println("\nAggiungere altro evento? Y/n");
 				String continueToAdd = sc.nextLine();
 
 				if (continueToAdd.toLowerCase().equals("n")) {
-					sc.close();
 					break;
 				}
 
@@ -88,5 +86,21 @@ public class Main {
 			}
 		}
 
+		// RICERCA EVENTO PER DATA
+		System.out.println("\nVuoi cercare un evento attraverso una data specifica? Y/n");
+		String sceltaCercaEvento = sc.nextLine();
+		if (sceltaCercaEvento.toLowerCase().equals("y")) {
+			System.out.println("\nPer che data vuoi cercare un evento? [YYYY-mm-GG]");
+			String dataDaCercareString = sc.nextLine();
+			LocalDate dataDaCercare = LocalDate.parse(dataDaCercareString);
+
+			List<Evento> newEventi = p1.getEventiConSpecificaData(dataDaCercare);
+
+			for (Evento evento : newEventi) {
+				System.out.println(evento.toString() + "\n");
+			}
+		}
+
+		sc.close();
 	}
 }
