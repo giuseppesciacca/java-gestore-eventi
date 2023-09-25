@@ -98,9 +98,9 @@ public class Main {
 				System.out.println(evento.toString() + "\n");
 			}
 		}
-
+		
 		// STAMPA LISTA IN ORDINE DI DATA
-		System.out.println(p1.printSortedListByDate());
+		p1.printSortedListByDate();
 
 		sc.close();
 	}

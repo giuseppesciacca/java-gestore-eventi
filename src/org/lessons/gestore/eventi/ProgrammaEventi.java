@@ -1,6 +1,7 @@
 package org.lessons.gestore.eventi;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -68,13 +69,19 @@ public class ProgrammaEventi {
 			@Override
 			public int compare(Evento evento1, Evento evento2) {
 				return evento1.getData().compareTo(evento2.getData());
+
 			}
 		});
 
 		String listPrinted = "";
 
 		for (Evento evento : eventi) {
-			listPrinted += "- " + evento.getData() + " - " + evento.getTitolo() + "\n";
+
+			DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			String formattedDate = evento.getData().format(pattern);
+
+			listPrinted += "- " + formattedDate + " - " + evento.getTitolo() + "\n";
+
 		}
 
 		return listPrinted;
