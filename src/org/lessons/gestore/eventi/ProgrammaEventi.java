@@ -11,7 +11,7 @@ public class ProgrammaEventi {
 	public ProgrammaEventi(String titolo) {
 
 		setTitolo(titolo);
-		this.eventi = new ArrayList<Evento>();
+		setEventi(new ArrayList<Evento>());
 	}
 
 	public String getTitolo() {

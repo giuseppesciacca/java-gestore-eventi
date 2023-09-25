@@ -66,9 +66,9 @@ public class Evento {
 		LocalDate today = LocalDate.now();
 
 		if (nPostiPrenotati >= getnPostiTot()) {
-			throw new Exception("SOLD OUT, non è possibile prenotare ulteriori posti.");
+			throw new Exception("SOLD OUT, non e' possibile prenotare ulteriori posti.");
 		} else if (data.isBefore(today)) {
-			throw new Exception("Non è possibile prenotare l'evento in quanto è stato già tenuto in data " + data
+			throw new Exception("Non e' possibile prenotare l'evento in quanto è stato gia' tenuto in data " + data
 					+ ". Prenota un altro evento.");
 		}
 	}
