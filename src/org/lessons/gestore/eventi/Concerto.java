@@ -8,8 +8,8 @@ import java.util.Locale;
 
 public class Concerto extends Evento {
 
-	LocalTime ora;
-	BigDecimal prezzo;
+	private LocalTime ora;
+	private BigDecimal prezzo;
 
 	public Concerto(String titolo, LocalDate data, int nPostiTot, LocalTime ora, BigDecimal prezzo) throws Exception {
 		super(titolo, data, nPostiTot);
